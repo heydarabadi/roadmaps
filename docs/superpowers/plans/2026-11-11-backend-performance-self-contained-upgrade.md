@@ -1,5 +1,7 @@
 # Backend Performance Self-Contained Course Upgrade
 
+> **Current repository location:** the Persian edition now lives under `fa/backend-performance/` and the English edition under `en/backend-performance/`. This plan records the completed course upgrade before the repository-wide language split; the current layout normalizes both editions to `README.md` at each matching path.
+
 > **For agentic workers:** Execute by parallel chapter authorship, followed by an independent content review and one integration audit. The user has already selected subagent-driven work and authorized execution.
 
 **Goal:** Upgrade all 44 topic guides into self-contained Persian lessons with complete English editions and expanded curated references, so neither language depends on external reading for core understanding.

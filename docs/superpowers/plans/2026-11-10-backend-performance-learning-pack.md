@@ -1,5 +1,7 @@
 # Backend Performance Learning Pack Implementation Plan
 
+> **Current repository location:** the Persian edition now lives under `fa/backend-performance/` and the English edition under `en/backend-performance/`. The historical task paths below record the original build plan before the repository-wide language split.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build a Persian-first, fully navigable study pack covering every topic in roadmap.sh's Backend Performance best-practices checklist.
@@ -8,7 +10,7 @@
 
 **Tech Stack:** Markdown (`README.md`), Mermaid where useful, PowerShell for folder/file creation; no application code or dependency installation.
 
-**Spec:** [2026-11-10-backend-performance-learning-pack-design.md](D:/Learn/Roadmap/docs/superpowers/specs/2026-11-10-backend-performance-learning-pack-design.md)
+**Spec:** [2026-11-10-backend-performance-learning-pack-design.md](../specs/2026-11-10-backend-performance-learning-pack-design.md)
 
 ## Global Constraints
 

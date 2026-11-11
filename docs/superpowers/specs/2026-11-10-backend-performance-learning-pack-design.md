@@ -1,5 +1,7 @@
 # Backend Performance Learning Pack Design
 
+> **Current repository location:** the Persian edition is maintained under `fa/backend-performance/` and the English edition under `en/backend-performance/`. The historical `Backend Performace` path below records the original folder request and source context.
+
 ## Intent
 
 Create a Persian-first, topic-by-topic study pack in `D:\Learn\Roadmap\Backend Performace` based on roadmap.sh's **Backend Performance** best-practices roadmap. The material should turn the roadmap checklist into a navigable learning resource a backend developer can study, practice, and review without needing a single programming language or vendor stack.

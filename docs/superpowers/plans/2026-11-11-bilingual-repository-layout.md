@@ -117,5 +117,5 @@
   - Expected: no missing local target remains in course pages, catalogs, repository entry pages, or maintained `docs/superpowers/` guides; report any ambiguous historical workflow links separately.
 - [x] **Step 3: Review the final Git diff for text changes outside path rewrites.**
   - Expected: course prose and examples are unchanged.
-- [ ] **Step 4: Commit the reorganization and push `main`.**
+- [x] **Step 4: Commit the reorganization and push `main`.**
   - Expected: `origin/main` matches local `HEAD`, and the worktree is clean.

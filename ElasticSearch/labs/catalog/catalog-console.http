@@ -1,0 +1,80 @@
+# 1) Mapping صریح؛ title هم متن است هم مقدار exact برای sort
+PUT /products-lab-v1
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "properties": {
+      "product_id": { "type": "keyword" },
+      "title": {
+        "type": "text",
+        "fields": { "raw": { "type": "keyword" } }
+      },
+      "description": { "type": "text" },
+      "brand": { "type": "keyword" },
+      "category": { "type": "keyword" },
+      "price": { "type": "long" },
+      "available": { "type": "boolean" },
+      "created_at": { "type": "date" },
+      "tags": { "type": "keyword" },
+      "offers": {
+        "type": "nested",
+        "properties": {
+          "seller": { "type": "keyword" },
+          "price": { "type": "long" },
+          "stock": { "type": "integer" }
+        }
+      },
+      "attributes": { "type": "flattened" }
+    }
+  }
+}
+
+# 2) Bulk؛ هر action و source سند یک خط مستقل NDJSON است
+POST /_bulk?refresh=wait_for
+{"index":{"_index":"products-lab-v1","_id":"sku-001"}}
+{"product_id":"sku-001","title":"هدفون بی‌سیم آوا","description":"هدفون بلوتوثی سبک با حذف نویز برای رفت‌وآمد","brand":"آوا","category":"audio","price":4200000,"available":true,"created_at":"2026-01-15T10:00:00Z","tags":["bluetooth","noise-cancelling"],"offers":[{"seller":"direct","price":4200000,"stock":12},{"seller":"market-a","price":4100000,"stock":3}],"attributes":{"color":"black","connection":"bluetooth"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-002"}}
+{"product_id":"sku-002","title":"هدفون سیمی پارس","description":"هدفون سیمی روگوشی با میکروفون مکالمه","brand":"پارس","category":"audio","price":1350000,"available":true,"created_at":"2026-02-02T09:30:00Z","tags":["wired","headphones"],"offers":[{"seller":"direct","price":1350000,"stock":20}],"attributes":{"color":"white","connection":"wired"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-003"}}
+{"product_id":"sku-003","title":"اسپیکر بلوتوثی کوچک","description":"اسپیکر قابل حمل برای سفر و فضای باز","brand":"آوا","category":"audio","price":2250000,"available":true,"created_at":"2026-02-11T14:00:00Z","tags":["bluetooth","portable"],"offers":[{"seller":"market-a","price":2250000,"stock":7}],"attributes":{"color":"blue","connection":"bluetooth"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-004"}}
+{"product_id":"sku-004","title":"کیبورد مکانیکی بی‌صدا","description":"کیبورد مکانیکی جمع‌وجور با کلیدهای کم‌صدا","brand":"تک","category":"computer","price":5100000,"available":true,"created_at":"2026-03-04T08:00:00Z","tags":["keyboard","mechanical"],"offers":[{"seller":"direct","price":5100000,"stock":5},{"seller":"market-b","price":4950000,"stock":2}],"attributes":{"layout":"fa-en","switch":"silent"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-005"}}
+{"product_id":"sku-005","title":"ماوس بی‌سیم ارگونومیک","description":"ماوس بی‌سیم مناسب کار طولانی با دست راست","brand":"تک","category":"computer","price":1850000,"available":true,"created_at":"2026-03-10T11:00:00Z","tags":["mouse","wireless"],"offers":[{"seller":"direct","price":1850000,"stock":0}],"attributes":{"color":"gray","connection":"wireless"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-006"}}
+{"product_id":"sku-006","title":"نمایشگر ۲۷ اینچ","description":"نمایشگر با وضوح بالا برای کار و طراحی","brand":"دید","category":"computer","price":12800000,"available":true,"created_at":"2026-04-01T12:00:00Z","tags":["monitor","display"],"offers":[{"seller":"market-b","price":12800000,"stock":4}],"attributes":{"size":"27","panel":"ips"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-007"}}
+{"product_id":"sku-007","title":"کتاب طراحی سامانه‌های توزیع‌شده","description":"کتاب آموزشی درباره مقیاس‌پذیری و معماری نرم‌افزار","brand":"دانش","category":"books","price":980000,"available":true,"created_at":"2026-04-18T07:45:00Z","tags":["book","architecture"],"offers":[{"seller":"direct","price":980000,"stock":30}],"attributes":{"language":"fa","format":"paper"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-008"}}
+{"product_id":"sku-008","title":"چراغ مطالعه رومیزی","description":"چراغ LED قابل تنظیم برای مطالعه و میز کار","brand":"روشن","category":"home","price":760000,"available":false,"created_at":"2026-05-05T16:00:00Z","tags":["led","desk"],"offers":[{"seller":"market-a","price":760000,"stock":0}],"attributes":{"color":"warm-white","power":"usb"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-009"}}
+{"product_id":"sku-009","title":"پاوربانک ۲۰۰۰۰ میلی‌آمپر","description":"شارژر همراه سریع برای سفرهای طولانی","brand":"آوا","category":"mobile","price":2950000,"available":true,"created_at":"2026-05-21T13:15:00Z","tags":["powerbank","travel"],"offers":[{"seller":"direct","price":2950000,"stock":9}],"attributes":{"capacity":"20000","ports":"2"}}
+{"index":{"_index":"products-lab-v1","_id":"sku-010"}}
+{"product_id":"sku-010","title":"پایه نگهدارنده لپ‌تاپ","description":"پایه آلومینیومی برای خنک‌کاری لپ‌تاپ روی میز","brand":"تک","category":"computer","price":1650000,"available":true,"created_at":"2026-06-01T09:00:00Z","tags":["laptop","stand"],"offers":[{"seller":"market-a","price":1650000,"stock":14}],"attributes":{"material":"aluminum","adjustable":"true"}}
+
+# 3) Full-text + filter؛ title رتبه می‌سازد، قیمت/موجودی شرط قبولی‌اند
+POST /products-lab-v1/_search
+{"query":{"bool":{"must":[{"match":{"title":"هدفون بی‌سیم"}}],"filter":[{"term":{"available":true}},{"range":{"price":{"lte":5000000}}}]}},"_source":["product_id","title","price","available"]}
+
+# 4) Exact lookup روی ID کسب‌وکاری
+POST /products-lab-v1/_search
+{"query":{"term":{"product_id":"sku-004"}}}
+
+# 5) Aggregation؛ دسته‌ها و میانگین قیمت، بدون برگرداندن hitها
+POST /products-lab-v1/_search
+{"size":0,"aggs":{"by_category":{"terms":{"field":"category","size":10},"aggs":{"average_price":{"avg":{"field":"price"}}}}}}
+
+# 6) Nested query؛ seller و stock باید در همان offer باشند
+POST /products-lab-v1/_search
+{"query":{"nested":{"path":"offers","query":{"bool":{"must":[{"term":{"offers.seller":"direct"}},{"range":{"offers.stock":{"gte":5}}}]}},"inner_hits":{}}}}
+
+# 7) Sort پایدار؛ price سپس product_id برای شکستن تساوی
+POST /products-lab-v1/_search
+{"size":3,"query":{"term":{"available":true}},"sort":[{"price":"asc"},{"product_id":"asc"}],"_source":["product_id","title","price"]}
+
+# 8) Date range؛ بازه نیمه‌باز UTC [from, to)
+POST /products-lab-v1/_search
+{"query":{"range":{"created_at":{"gte":"2026-03-01T00:00:00Z","lt":"2026-05-01T00:00:00Z"}}}}

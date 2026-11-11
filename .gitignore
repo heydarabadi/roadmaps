@@ -1,0 +1,16 @@
+# Local tooling notes are not part of the learning repository
+/.superpowers/
+
+# Local credentials and private key files
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# Operating system files
+.DS_Store
+Thumbs.db

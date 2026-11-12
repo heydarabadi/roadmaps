@@ -56,21 +56,11 @@ Depending on the topic, lessons may include step-by-step explanations, worked ex
 ├── en/
 │   ├── README.md                     # English course catalog
 │   └── <course-slug>/                # The same eleven courses in English
-├── shared/
-│   ├── README.md                     # Shared-content convention
-│   └── references/                  # References used across courses
-├── docs/superpowers/                 # Maintained plans and specifications
-├── tools/                            # Repository utilities
-└── internal/
-    ├── scripts/                      # Maintenance scripts
-    └── workflow-artifacts/           # Process reports and review records
 ```
 
 The names `fa/` and `en/` have one meaning throughout the repository: Persian and English. Each course has the same slug in both trees. Chapters, topics, labs, glossaries, and course-specific references stay inside their language edition. For example, `fa/kubernetes/` and `en/kubernetes/` are the two editions of the same path. Every course entry page uses the filename `README.md`.
 
-`docs/superpowers/` contains maintained plans and specifications, including the [Backend Performance learning-pack plan](../docs/superpowers/plans/2026-11-10-backend-performance-learning-pack.md), [self-contained learning upgrade plan](../docs/superpowers/plans/2026-11-11-backend-performance-self-contained-upgrade.md), and [design specification](../docs/superpowers/specs/2026-11-10-backend-performance-learning-pack-design.md). Historical execution and review records live under `internal/workflow-artifacts/` and are outside the learning routes. Technology-specific references stay with their course; `shared/references/` is reserved for material genuinely shared by multiple courses.
-
-`tools/translate_architecture_en.legacy.ps1` is a utility from the previous layout. It deliberately stops with a notice so it cannot overwrite the separated course editions. Edit and maintain learning material directly in the appropriate `fa/` or `en/` tree.
+Technology-specific references and labs stay with their course and language edition. Maintain paired learning material directly in the matching `fa/` or `en/` course tree.
 
 ## Languages and naming
 
